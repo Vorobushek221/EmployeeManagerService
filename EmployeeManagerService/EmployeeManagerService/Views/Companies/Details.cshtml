@@ -1,0 +1,50 @@
+﻿@model EmployeeManagerService.Models.ViewModels.CompanyViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Mode</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <h4>Компания</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div>
+            @Html.LabelFor(model => model.Name)
+            <div>
+                @Html.EditorFor(model => model.Name, new { required = true })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.Size)
+            <div>
+                @Html.EditorFor(model => model.Size, new { required = true })
+                @Html.ValidationMessageFor(model => model.Size)
+            </div>
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.LegalForm)
+            <div>
+                @Html.EditorFor(model => model.LegalForm, new { required = true })
+                @Html.ValidationMessageFor(model => model.LegalForm)
+            </div>
+        </div>
+
+        <div>
+            <input type="submit" value="Сохранить" />
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Назад", "Index")
+</div>

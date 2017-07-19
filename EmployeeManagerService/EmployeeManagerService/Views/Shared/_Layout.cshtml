@@ -3,15 +3,16 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title</title>
     @Styles.Render("~/Content/css")
 </head>
 <body>
-
-    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-    <li>@Html.ActionLink("About", "About", "Home")</li>
-    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-
+    <nav>
+        <ul>
+            <li>@Html.ActionLink("Список работников", "Index", "Employees")</li>
+            <li>@Html.ActionLink("Список компаний", "Index", "Companies")</li>
+        </ul>
+    </nav>
     <div class="container body-content">
         @RenderBody()
         <hr />

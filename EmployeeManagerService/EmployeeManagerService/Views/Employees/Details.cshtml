@@ -1,0 +1,74 @@
+﻿@model EmployeeManagerService.Models.ViewModels.EmployeeViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.Mode</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div>
+        <h4>Работник</h4>
+        <hr />
+        @Html.ValidationSummary(true)
+        <div>
+            @Html.LabelFor(model => model.Surname)
+            <div>
+                @Html.EditorFor(model => model.Surname, new { required = true })
+                @Html.ValidationMessageFor(model => model.Surname)
+            </div>
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.Name)
+            <div>
+                @Html.EditorFor(model => model.Name, new { required = true })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.FatherName)
+            <div>
+                @Html.EditorFor(model => model.FatherName, new { required = true })
+                @Html.ValidationMessageFor(model => model.FatherName)
+            </div>
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.RecruitDate)
+            <div>
+                @Html.EditorFor(model => model.RecruitDate, new { required = true })
+                @Html.ValidationMessageFor(model => model.RecruitDate)
+            </div>
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.Rank)
+            <div>
+                @Html.EnumDropDownListFor(model => model.Rank, new { required = true })
+                @Html.ValidationMessageFor(model => model.Rank)
+            </div>
+        </div>
+
+        <div>
+            @Html.LabelFor(model => model.CompanyId)
+            <div>
+                @Html.DropDownListFor(model => model.CompanyId, EmployeeManagerService.Controllers.EmployeesController.FillCompaniesDropdown(), new { required = true })
+                @Html.ValidationMessageFor(model => model.CompanyId)
+            </div>
+        </div>
+
+        <div>
+            <input type="submit" value="Сохранить" />
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Назад", "Index")
+</div>
